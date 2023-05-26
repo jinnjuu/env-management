@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <th:block th:fragment="headerFragment">
+        <div class="row">
+            <button type="button" class="btn" th:onclick="|location.href='@{/environment-variables/create}'|">환경변수 생성</button>
+            <button type="button" class="btn" th:onclick="|location.href='@{/environment-variables}'|">환경변수 전체조회</button>
+        </div>
+        <hr/>
+    </th:block>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="fragments/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+
+<body>
+    <th:block layout:fragment="content">
+    <script th:if="${type}" th:inline="javascript">
+        /*<![CDATA[*/
+            var type = [[${type}]];
+            var message = [[${Message}]];
+            var url = "/environment-variables";
+
+            switch (type) {
+                case "NotFound":
+                    message = "해당 데이터가 존재하지 않습니다."; break;
+            }
+            alert(message);
+            location.replace(url);
+        /*]]>*/
+    </script>
+
+</body>
+</html>

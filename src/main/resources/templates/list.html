@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="fragments/layout"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<body>
+    <th:block layout:fragment="content">
+    <div>
+        <h2>환경변수 전체조회</h2>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">환경변수</th>
+                <th scope="col">값</th>
+                <th scope="col">설명</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${environmentVariables.size()} > 0" th:each="env, envStat: ${environmentVariables}">
+                <td>
+                    <span th:text="${envStat.size - envStat.index}"></span>
+                </td>
+                <td>
+                    <a th:text="${env.name}" th:href="@{'/environment-variables/' + ${env.id}}"></a>
+                </td>
+                <td>
+                    <a th:text="${env.data}" th:href="@{'/environment-variables/' + ${env.id}}"></a>
+                </td>
+                <td>
+                    <a th:text="${env.description}" th:href="@{'/environment-variables/' + ${env.id}}"></a>
+                </td>
+            </tr>
+            <tr class="text-center" th:unless="${environmentVariables.size()} > 0">
+                <td class="text-center" colspan="4">등록된 환경변수가 없습니다. </td>
+            </tr>
+        </tbody>
+    </table>
+
+    </th:block>
+</body>
+</html>

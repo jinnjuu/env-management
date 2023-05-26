@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="fragments/layout"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<body>
+    <th:block layout:fragment="content">
+    <div>
+        <h2>환경변수 수정</h2>
+    </div>
+
+    <form th:action method="post" enctype="multipart/form-data">
+        <div>
+            <label>환경변수</label>
+            <label>
+                <input type="text" name="name" th:value="${environmentVariable.name}" required="required">
+            </label>
+        </div>
+
+        <div>
+            <label>값</label>
+            <label>
+                <input type="text" name="data" th:value="${environmentVariable.data}" required="required">
+            </label>
+        </div>
+
+        <div>
+            <label>설명</label>
+            <label>
+                <input type="text" name="description" th:value="${environmentVariable.description}">
+            </label>
+        </div>
+
+        <input type="submit" class="btn" value="수정">
+    </form>
+
+</body>
+</html>

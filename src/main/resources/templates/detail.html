@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="fragments/layout"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<body>
+    <th:block layout:fragment="content">
+    <div>
+        <h2 th:text="|${environmentVariable.name} 상세조회|"></h2>
+    </div>
+
+    <div class="row btn-right">
+            <button type="button" class="btn" th:onclick="|location.href='@{'/environment-variables/' + ${environmentVariable.id} + '/history'}'|">변경내역</button>
+            <button type="button" class="btn" th:onclick="|location.href='@{'/environment-variables/' + ${environmentVariable.id} + '/update'}'|">수정</button>
+
+            <form id="delete-form" th:action="@{'/environment-variables/' + ${environmentVariable.id} + '/delete'}" method="post">
+                <input type="hidden" name="delete" value="delete"/>
+                <button id="delete-btn" class="btn">삭제</button>
+            </form>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr class="text-center">
+                <th scope="col">환경변수</th>
+                <th scope="col">값</th>
+                <th scope="col">설명</th>
+                <th scope="col">생성일시</th>
+                <th scope="col">변경일시</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <span th:text="${environmentVariable.name}"></span>
+                </td>
+                <td>
+                    <span th:text="${environmentVariable.data}"></span>
+                </td>
+                <td>
+                    <span th:text="${environmentVariable.description}"></span>
+                </td>
+                <td>
+                    <span th:text="${#temporals.format(environmentVariable.createdAt, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                </td>
+                <td>
+                    <span th:text="${#temporals.format(environmentVariable.updatedAt, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

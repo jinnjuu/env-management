@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="fragments/layout"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<body>
+    <th:block layout:fragment="content">
+    <div>
+        <h2 th:text="|${revisions[0].envName} 변경내역|"></h2>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr class="text-center">
+            <th scope="col">#</th>
+            <th scope="col">환경변수</th>
+            <th scope="col">값</th>
+            <th scope="col">설명</th>
+            <th scope="col">변경일시</th>
+            <th scope="col">변경유형</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="revision, revisionStat: ${revisions}">
+                <td>
+                    <span th:text="${revisionStat.size - revisionStat.index}"></span>
+                </td>
+                <td>
+                    <span th:text="${revision.envName}"></span>
+                </td>
+                <td>
+                    <span th:text="${revision.envData}"></span>
+                </td>
+                <td>
+                    <span th:text="${revision.description}"></span>
+                </td>
+                <td>
+                    <span th:text="${#temporals.format(revision.updatedAt, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                </td>
+                <td>
+                    <span th:text="${revision.revisionType}"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

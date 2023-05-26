@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class EnvController {
+public class MainController {
 
-    @GetMapping
+    @GetMapping("/")
     public String index() {
-        return "index";
+        return "common/index";
     }
 
 }
