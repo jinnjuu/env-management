@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="" xmlns:layout="">
-    <th:block th:replace="fragments/head::headFragment"></th:block>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+    <div th:fragment="headFragment" th:replace="~{fragments/head :: headFragment}"></div>
     <body>
-        <th:block th:replace="fragments/header::headerFragment"></th:block>
+        <div th:fragment="headerFragment" th:replace="~{fragments/header :: headerFragment}"></div>
 
-        <th:block layout:fragment="content"></th:block>
+        <div layout:fragment="content"></div>
     </body>
 </html>
