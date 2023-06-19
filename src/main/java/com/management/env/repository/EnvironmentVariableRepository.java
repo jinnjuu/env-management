@@ -14,4 +14,5 @@ public interface EnvironmentVariableRepository extends
 
     List<EnvironmentVariable> findAllByOrderByIdDesc();
 
+    EnvironmentVariable findByName(String name);
 }

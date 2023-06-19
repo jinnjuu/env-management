@@ -31,7 +31,11 @@ public class EnvironmentVariableController {
     }
 
     @PostMapping("/create")
-    public String addEnvironmentVariable(@ModelAttribute EnvironmentForm form) {
+    public String addEnvironmentVariable(@ModelAttribute EnvironmentForm form, Model model) {
+        if(environmentVariableService.checkDuplicateEnvironmentVariableName(form.getName())) {
+            model.addAttribute("type", "DuplicateName");
+            return "common/alert";
+        }
         environmentVariableService.createEnvironmentVariable(form);
         return "redirect:/environment-variables";
     }

@@ -28,6 +28,10 @@ public class EnvironmentVariableService {
         return environmentVariableRepository.findAllByOrderByIdDesc();
     }
 
+    public boolean checkDuplicateEnvironmentVariableName(String name) {
+        return environmentVariableRepository.findByName(name) != null;
+    }
+
     public void createEnvironmentVariable(EnvironmentForm form) {
         EnvironmentVariable environmentVariable = new EnvironmentVariable();
         environmentVariable.setName(form.getName());

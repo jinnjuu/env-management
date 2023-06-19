@@ -13,6 +13,8 @@
             switch (type) {
                 case "NotFound":
                     message = "해당 데이터가 존재하지 않습니다."; break;
+                case "DuplicateName"
+                    message = "중복된 이름의 환경변수가 존재합니다."; break;
             }
             alert(message);
             location.replace(url);
